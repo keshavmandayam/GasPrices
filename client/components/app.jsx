@@ -34,6 +34,7 @@ class App extends React.Component {
       .then(function(response) {
         const newState = self.state;
         newState.data = response.data;
+        newState.userLocation = false;
         self.setState(newState);
       })
       .catch(function(error) {
