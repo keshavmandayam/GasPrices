@@ -24,7 +24,7 @@
 
 ## Solution
 
-> My solution is provide the user with a list of the nearby gas stations ordered either by price or distance from the user themselves.
+> My solution is geolocate the user and provide them with a list of the nearby gas stations ordered either by price or distance from the user themselves.
 
 ## Quote from CEO
 
