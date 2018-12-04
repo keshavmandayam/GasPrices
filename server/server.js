@@ -16,7 +16,6 @@ app.use(express.static(path.join('././public')));
 
 app.get('/api/gasprices', (req, res) => {
   geocoder.geocode(req.query.location, function(err, data) {
-    console.log(data[0]);
     db.checkRedis(`${data[0].latitude}, ${data[0].longitude}`, (reply, er) => {
       if (reply) {
         res.send(JSON.parse(reply).stations);
@@ -24,7 +23,7 @@ app.get('/api/gasprices', (req, res) => {
         request(
           `http://api.mygasfeed.com/stations/radius/${data[0].latitude}/${
             data[0].longitude
-          }/1/reg/price/${key.gas}.json`,
+          }/2/reg/price/${key.gas}.json`,
           function(error, response, body) {
             console.log('error:', error); // Print the error if one occurred
             console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
@@ -35,6 +34,11 @@ app.get('/api/gasprices', (req, res) => {
       }
     });
   });
+});
+
+app.post('/api/gasprices', (req, res) => {
+  db.addToRedis(`${req.body.latitude}, ${req.body.longitude}`, req.body);
+  res.send(JSON.parse(body).stations);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

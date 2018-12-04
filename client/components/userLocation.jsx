@@ -1,5 +1,6 @@
 import React from 'react';
 import { geolocated } from 'react-geolocated';
+import ReactLoading from 'react-loading';
 
 class UserLocation extends React.Component {
   constructor(props) {
@@ -12,23 +13,16 @@ class UserLocation extends React.Component {
         `${this.props.coords.latitude} ,${this.props.coords.longitude}`
       );
     }
-    return !this.props.isGeolocationAvailable ? (
-      <div>
-        <div>Your browser does not support Geolocation</div>
-      </div>
-    ) : !this.props.isGeolocationEnabled ? (
-      <div>
-        <div>Geolocation is not enabled</div>
-      </div>
-    ) : this.props.coords ? (
-      <div>
+    return this.props.coords ? (
+      <div className="loadingBar">
         <div>
-          Your current location is {this.props.coords.latitude}{' '}
-          {this.props.coords.longitude}
+          <ReactLoading type={'balls'} color={'black'} height={66} width={37} />
         </div>
       </div>
     ) : (
-      <div>Getting the location data&hellip; </div>
+      <div className="loadingBar">
+        <ReactLoading type={'balls'} color={'black'} height={66} width={37} />
+      </div>
     );
   }
 }

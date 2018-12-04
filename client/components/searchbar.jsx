@@ -22,22 +22,20 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            {'Location '}
-            <input
-              type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          <input
+            type="text"
+            placeholder="Where do you need that gas?"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </label>
+        <input type="submit" value="Submit" />
         <button type="button" onClick={this.props.handleUserLocation}>
-          Click Me!
+          Find me!
         </button>
-      </div>
+      </form>
     );
   }
 }
