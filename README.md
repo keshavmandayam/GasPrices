@@ -1,4 +1,4 @@
-# Gas Price Project
+# Gas Price Project test 1
 
 <!--
 > The purpose of this application is to provide a user with the cheapest gas or petrol prices in their vicinty. Furthermore, the site crowdsources more up to date gas price information and will alternatively list that as well. There is a user input to add a new gas price to the database.
